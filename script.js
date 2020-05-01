@@ -58,7 +58,7 @@ class phone{
         this.memory = memory
     }
 
-    fullDetails = function(){
+    fullDetails(){
         return 'The color of my ' + brand + '\'s ' + model + 'is ' + color; 
     }
 }
@@ -72,4 +72,148 @@ let iPhone11 = new phone(
 
 )
 
-console.log(iphone11);
+console.log(iPhone11);
+
+
+// IIEF
+
+(function(){
+    console.log("Self invoked");
+})();
+
+(function(){
+    var name = "Afam";
+    var name = "MyName";
+
+    console.log(name);
+    
+}())
+
+// console.log(name);
+
+
+// Scope
+
+var global = "This varriable is globally SCOPED, it can be used anywhere in this file"
+
+function checkForGlobal(){
+    console.log(global);
+    
+}
+
+checkForGlobal();
+
+console.log(global);
+
+function checkForLocal() {
+    var local = "This is locally SCOPED and can't be used anywhere outside this function"
+    console.log(local);
+    
+}
+checkForLocal();
+
+// console.log(local);
+
+
+// Closure
+
+
+let anything = "anything "
+
+function mainGlobal(){
+    var something = "something ";
+
+    function innerOne(){
+        var anotherthing = "anotherthing";
+
+        console.log(anything + something + anotherthing);
+        
+        
+    }
+    innerOne()
+    
+}
+
+mainGlobal();
+
+
+// Module
+
+var myModule = (function() {
+    'use strict';
+
+    var _privateProperty = 'Hello World';
+    
+    function _privateMetod(){
+        console.log(_privateProperty);
+    }
+
+    return{
+        publicMethod: function(){
+            _privateMetod();
+        }
+    };
+}());
+
+myModule.publicMethod()
+
+console.log(module._privateProperty);
+
+
+// module._privateMetod();
+
+// export default myModule;
+
+// Hoisting
+
+console.log(hoist);
+var hoist = "Has been hoisted"
+
+
+// Currying
+
+var multiply = function(a){
+    return function(b){
+        return function(c){
+            return function(d){
+                return function(e){
+                    return a * b * c * d * e
+                }
+            }
+        }
+    }
+}
+
+console.log(multiply(3) (4) (9) (2) (7));
+
+
+// Memoization
+
+
+// Apply/Call and Bind method
+
+var obj = {
+    num: 2
+}
+
+var add = function(um1, um2, um3){
+    return um1 + um2 + um3
+}
+
+var arr = [4, 6, 9]
+
+let final = add.call(obj, 4, 6, 9)
+
+console.log(final);
+
+let newFinal = add.apply(obj, arr)
+
+console.log(newFinal);
+
+let finalFinal = add.bind(obj)
+
+console.log(finalFinal(4, 6, 9));
+
+
+// Polymorphism
+
